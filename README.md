@@ -49,6 +49,13 @@ messageテーブルのbodyカラム,imageカラムにのみnullを許可する�
 |user_id | integer |
 |group_id | integer |
 
+```
+class Message < ActiveRecord::Base 
+  belongs_to :user
+  belongs_to :group
+end
+```
+
 ## userテーブル
 
 |column | type |
@@ -57,11 +64,25 @@ messageテーブルのbodyカラム,imageカラムにのみnullを許可する�
 |e-mail | text |
 |password | text |
 
+```
+class User < ActiveRecord::Base
+  has_many :messages
+  has_and_belongs_to_many :groups
+end
+```
+
 ## groupテーブル
 
 |column | type |
 |-------|----------|
 |group_name | text |
+
+```
+class Group < ActiveRecord::Base
+  has_many :messages
+  has_and_belongs_to_many :users
+end
+```
 
 ## user_groupテーブル(中間テーブル)
 
