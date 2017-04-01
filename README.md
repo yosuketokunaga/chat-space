@@ -32,12 +32,12 @@ Chatspace DATABASE設計
   *メッセージ管理機能<br>
   *ユーザー管理機能<br>
   *グループ管理機能<br>
-  *ユーザー・グループ管理機能<br>
+  *グループ・ユーザー管理機能<br>
 ## アソシエーションについて
-userテーブルとmessageテーブル、groupテーブルとmessageテーブルがどちらも一対多となるアソシエーションを設定する。<br>
-userテーブルとgroupテーブルはお互いに多対多となるため中間テーブルのuser-groupテーブルを作成しアソシエーションを設定する。
+usersテーブルとmessagesテーブル、groupsテーブルとmessagesテーブルがどちらも一対多となるアソシエーションを設定する。<br>
+usersテーブルとgroupsテーブルはお互いに多対多となるため中間テーブルのgroup-usersテーブルを作成しアソシエーションを設定する。
 ## null許可について
-messageテーブルのbodyカラム,imageカラムにのみnullを許可するよう設定する。
+messagesテーブルのbodyカラム,imageカラムにのみnullを許可するよう設定する。
 
 ***
 ## messagesテーブル
