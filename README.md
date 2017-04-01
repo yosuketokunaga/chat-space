@@ -67,7 +67,7 @@ end
 ```
 class User < ActiveRecord::Base
   has_many :messages
-  has_and_belongs_to_many :groups
+  has_man through :groups
 end
 ```
 
@@ -80,7 +80,7 @@ end
 ```
 class Group < ActiveRecord::Base
   has_many :messages
-  has_and_belongs_to_many :users
+  has_man through :users
 end
 ```
 
