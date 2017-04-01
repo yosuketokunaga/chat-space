@@ -46,14 +46,18 @@ messagesテーブルのbodyカラム,imageカラムにのみnullを許可する�
 |-------|----------|
 |body | text |
 |image|string|
-|group_id | references |
-|user_id | references |
+|group_id | references :group, foreign_key: true |
+|user_id | references  :user, foreign_key: true |
 
 ```
 class Message < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
 end
+```
+```
+INDEX
+  add_index :messages, [:group_id, :user_id]
 ```
 
 ## usersテーブル
@@ -67,7 +71,7 @@ end
 ```
 class User < ActiveRecord::Base
   has_many :messages
-  has_many through :groups
+  has_many : group, through: :groups_users
 end
 ```
 
@@ -80,7 +84,7 @@ end
 ```
 class Group < ActiveRecord::Base
   has_many :messages
-  has_many through :users
+  has_many :user, through: :group_users
 end
 ```
 
@@ -88,5 +92,5 @@ end
 
 |column | type |
 |-------|----------|
-|group_id | references |
-|user_id | references |
+|group_id | references :group, foreign_key: true |
+|user_id | references  :user, foreign_key: true|
