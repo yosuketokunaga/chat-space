@@ -40,23 +40,23 @@ userテーブルとgroupテーブルはお互いに多対多となるため中�
 messageテーブルのbodyカラム,imageカラムにのみnullを許可するよう設定する。
 
 ***
-## messageテーブル
+## messagesテーブル
 
 |column | type |
 |-------|----------|
 |body | text |
 |image|string|
-|user_id | integer |
-|group_id | integer |
+|group_id | references |
+|user_id | references |
 
 ```
-class Message < ActiveRecord::Base 
+class Message < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
 end
 ```
 
-## userテーブル
+## usersテーブル
 
 |column | type |
 |-------|----------|
@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
 end
 ```
 
-## groupテーブル
+## groupsテーブル
 
 |column | type |
 |-------|----------|
@@ -84,9 +84,9 @@ class Group < ActiveRecord::Base
 end
 ```
 
-## user_groupテーブル(中間テーブル)
+## group_usersテーブル(中間テーブル)
 
 |column | type |
 |-------|----------|
-|user_id | integer |
-|group_id | integer |
+|group_id | references |
+|user_id | references |
