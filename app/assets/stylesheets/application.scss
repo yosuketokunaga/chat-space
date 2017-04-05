@@ -135,19 +135,15 @@ $font-color-for-date:#999999;
           margin-bottom: 40px;
           .chat__main--body--block{
             margin-bottom: 10px;
-            &:after {
-              content: '';
-              display: block;
-              clear: both;
-            }
-            .chat__main--body--block--name{
+            @include clearfix();
+            &--name{
               color: $font-color-gray;
               font-family: Bold;
               font-size: 16px;
               font-weight: 600;
               float: left;
             }
-            .chat__main--body--block--date{
+            &--date{
               color: $font-color-for-date;
               font-size: 12px;
               margin-left: 10px;
@@ -164,19 +160,15 @@ $font-color-for-date:#999999;
           margin-bottom: 40px;
           .chat__main--body--block{
             margin-bottom: 10px;
-            &:after {
-              content: '';
-              display: block;
-              clear: both;
-            }
-            .chat__main--body--block--name{
+            @include clearfix();
+            &--name{
               color: $font-color-gray;
               font-family: Bold;
               font-size: 16px;
               font-weight: 600;
               float: left;
             }
-            .chat__main--body--block--date{
+            &--date{
               color: $font-color-for-date;
               font-size: 12px;
               margin-left: 10px;
@@ -193,12 +185,9 @@ $font-color-for-date:#999999;
     }
     &--footer {
       height: 90px;
-      background-color: #DDDDDD;
+      background-color: #DDD;
       &--block{
-        padding-top:20px;
-        padding-bottom:20px;
-        padding-left:40px;
-        padding-right: 40px;
+        padding: 20px 40px 20px 40px;
         @include clearfix();
         &__left {
           background-color: white;
