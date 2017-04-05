@@ -112,8 +112,7 @@ $font-color-for-date:#999999;
         }
       }
       &__right {
-        float:right;
-        a {
+          float:right;
           display: inline-block;
           margin: 28px 0;
           padding-right: 20px;
@@ -122,7 +121,6 @@ $font-color-for-date:#999999;
           color: $font-color-blue;
           font-size: 14px;
           border: 2px solid;
-        }
       }
     }
     &--body {
