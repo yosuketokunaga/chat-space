@@ -1,8 +1,8 @@
 %p.notice チャットグループが作成されました。
 
-%div.chat
-  %div.chat__side
-    %div.chat__side--user
+.chat
+  .chat__side
+    .chat__side--user
       %h5 User Name
       %a.account-edit-button
         %i.fa.fa-cog
@@ -17,14 +17,14 @@
         %a.chat--group__link
           %p.chat--group__name name2
           %p.chat--group__message message2
-  %div.chat__main
-    %div.chat__main--header
-      %div.chat__main--header__left
+  .chat__main
+    .chat__main--header
+      .chat__main--header__left
         %h2 sampleグループ
         %p Members: yosuketokunaga
-      %div.chat__main--header__right
-        =link_to 'Edit', '' 
-    %div.chat__main--body
+      .chat__main--header__right
+        =link_to 'Edit', ''
+    .chat__main--body
       %ul
         %li
           .chat__main--body--block
@@ -36,9 +36,19 @@
             .chat__main--body--block--name tokunaga
             .chat__main--body--block--date 17/04/04 16:11:11
           %p.chat__main--body--message テスト2
-    %div.chat__main--footer
+    .chat__main--footer
       .chat__main--footer--block
-        %textarea.chat__main--footer--block__left{placeholder: "type a message"}
-        %label.chat__main--footer--image
-          %i.fa.fa-image
-        .chat__main--footer--block__right Send
+        %form
+          %textarea.chat__main--footer--block__left{:placeholder => "type a text"}
+          %button.chat__main--footer--image{:type=> "submit"}
+            %i.fa.fa-image
+            -# %.font-awesome{:type => "submit"}
+          -# %input.chat__main--footer--block__image{:type => "submit"}
+          %input.chat__main--footer--block__right{:type => "submit", :value => "Send"}/
+
+
+          -#
+          -# %textarea.chat__main--footer--block__left{placeholder: "type a message"}
+          -# %label.chat__main--footer--image
+          -#   %i.fa.fa-image
+          -# .chat__main--footer--block__right Send
