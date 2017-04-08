@@ -4,10 +4,10 @@
   .chat__side
     .chat__side--user
       %h5 User Name
-      %a.account-edit-button{"href"=>"./users/edit"}
-        %i.fa.fa-cog
-      %a.group-create-button
-        %i.fa.fa-pencil-square-o
+      =link_to "./users/edit" do
+        %i{class:"fa fa-cog"}
+      =link_to "" do
+        %i{class:"fa fa-pencil-square-o"}
     %ul.chat__side--groups
       %li.chat__side--group
         %a.chat--group__link
