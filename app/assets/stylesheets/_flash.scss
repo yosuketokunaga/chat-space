@@ -1,3 +1,11 @@
 .alert {
   text-align: center;
+  color: #fff;
+
+  &.alert-info {
+    background-color: $font-color-blue;
+  }
+  &.alert-danger {
+     background-color: $font-color-red;
+    }
 }
