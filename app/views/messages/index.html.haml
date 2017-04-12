@@ -6,7 +6,7 @@
       %h5 User Name
       =link_to edit_user_registration_path do
         = fa_icon 'cog'
-      =link_to "#" do
+      =link_to new_group_path do
         = fa_icon 'pencil-square-o'
     %ul.chat__side--groups
       %li.chat__side--group
@@ -23,7 +23,7 @@
         %h2 sampleグループ
         %p Members: yosuketokunaga
       .chat__main--header__right
-        =link_to 'Edit', ''
+        =link_to 'Edit', 'edit_group_path'
     .chat__main--body
       %ul
         %li
