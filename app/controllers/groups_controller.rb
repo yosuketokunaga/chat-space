@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
       redirect_to :root, notice: 'チャットグループが作成されました。'
     else
       flash.now[:alert] = 'チャットグループの作成に失敗しました。'
-      render :action => :new
+      render new_group_path
     end
   end
 
