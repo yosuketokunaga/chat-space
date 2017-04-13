@@ -8,7 +8,8 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to :root, notice: 'チャットグループが作成されました。'
     else
-      redirect_to :new_group_path, alert: 'チャットグループの作成に失敗しました。'
+      flash.now[:alert] = 'チャットグループの作成に失敗しました。'
+      render :action => :new
     end
   end
 
