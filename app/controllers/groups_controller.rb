@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
 
+  before_action :set_group, only: [:edit, :update]
+
   def new
     @group = Group.new
   end
@@ -15,17 +17,19 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
   end
 
   def update
-    @group = Group.find(params[:id])
     if @group.update(group_params)
       redirect_to group_messages_path(@group), notice: 'グループが更新されました。'
     else
       flash.now[:alert] = 'グループの更新に失敗しました。'
       render edit_group_path
     end
+  end
+
+  def set_group
+    @group = Group.find(params[:id])
   end
 
   private
