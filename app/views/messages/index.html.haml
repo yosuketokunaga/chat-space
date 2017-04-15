@@ -18,10 +18,10 @@
   .chat__main
     .chat__main--header
       .chat__main--header__left
-        %h2 sampleグループ
+        %h2 sample
         %p Members: yosuketokunaga
       .chat__main--header__right
-        =link_to 'Edit', 'edit_group_path'
+        =link_to 'Edit', edit_group_path(@group)
     .chat__main--body
       %ul
         %li
