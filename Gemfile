@@ -32,6 +32,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem "font-awesome-rails"
+gem 'devise'
+gem 'devise-i18n'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -45,8 +49,5 @@ group :development do
   gem 'spring'
   gem 'haml-rails'
   gem 'erb2haml'
-  gem "font-awesome-rails"
-  gem 'devise'
-  gem 'devise-i18n'
   gem 'pry-rails'
 end
