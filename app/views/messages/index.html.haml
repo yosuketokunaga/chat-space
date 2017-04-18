@@ -30,7 +30,7 @@
       .chat__main--header__right
         =link_to 'Edit', edit_group_path(@group)
     .chat__main--body
-      = render 'message', message: @message
+      = render :partial => "message", :collection => @messages
     .chat__main--footer
       .chat__main--footer--block
         = form_for ([@group,@message]) do |f|
