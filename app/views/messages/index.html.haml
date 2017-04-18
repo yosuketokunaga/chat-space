@@ -1,7 +1,7 @@
 .chat
   .chat__side
     .chat__side--user
-      %h5 User Name
+      %h5= current_user.name
       =link_to edit_user_registration_path do
         = fa_icon 'cog'
       =link_to new_group_path do
@@ -9,35 +9,38 @@
     %ul.chat__side--groups
       %li.chat__side--group
         %a.chat--group__link
-          %p.chat--group__name name1
-          %p.chat--group__message message1
+          %p.chat--group__name
+            = @group.name
+          %p.chat--group__message
+            test
       %li.chat__side--group
         %a.chat--group__link
-          %p.chat--group__name name2
-          %p.chat--group__message message2
+          %p.chat--group__name
+            = @group.name
+          %p.chat--group__message
+            test
   .chat__main
     .chat__main--header
       .chat__main--header__left
-        %h2 sample
-        %p Members: yosuketokunaga
+        %h2
+          = @group.name
+        %p
+          - @group.users.each do |user|
+            = user.name
       .chat__main--header__right
         =link_to 'Edit', edit_group_path(@group)
     .chat__main--body
-      %ul
-        %li
-          .chat__main--body--block
-            .chat__main--body--block--name tokunaga
-            .chat__main--body--block--date 17/04/04 16:11:11
-          %p.chat__main--body--message テスト1
-        %li
-          .chat__main--body--block
-            .chat__main--body--block--name tokunaga
-            .chat__main--body--block--date 17/04/04 16:11:11
-          %p.chat__main--body--message テスト2
+      - @messages.each do |message|
+        .chat__main--body--name
+          = message.user.name
+        .chat__main--body--date
+          = message.created_at
+        .chat__main--body--message
+          = message.body
     .chat__main--footer
       .chat__main--footer--block
-        %form
-          %textarea.chat__main--footer--block__left{:placeholder => "type a text"}
-          %button.chat__main--footer--image{:type=> "submit"}
+        = form_for ([@group,@message]) do |f|
+          = f.text_field :body, placeholder: "type a text", class: "chat__main--footer--block__left"
+          = button_tag type: 'submit', class: "chat__main--footer--image" do
             %i.fa.fa-image
-          %input.chat__main--footer--block__right{:type => "submit", :value => "Send"}
+          = f.submit "Send", class: "chat__main--footer--block__right"
