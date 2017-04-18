@@ -30,13 +30,7 @@
       .chat__main--header__right
         =link_to 'Edit', edit_group_path(@group)
     .chat__main--body
-      - @messages.each do |message|
-        .chat__main--body--name
-          = message.user.name
-        .chat__main--body--date
-          = message.created_at
-        .chat__main--body--message
-          = message.body
+      = render 'message', message: @message
     .chat__main--footer
       .chat__main--footer--block
         = form_for ([@group,@message]) do |f|

@@ -1,0 +1,7 @@
+- @messages.each do |message|
+  .chat__main--body--name
+    = message.user.name
+  .chat__main--body--date
+    = message.created_at
+  .chat__main--body--message
+    = message.body
