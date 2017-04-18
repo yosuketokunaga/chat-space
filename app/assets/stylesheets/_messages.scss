@@ -107,62 +107,32 @@
       }
     }
     &--body {
-      padding-top: 46px;
-      padding-left: 40px;
-      padding-right: 40px;
-      background-color: $color-for-body-main;
-      height: calc(100% - 255px);
-      ul {
-        li {
-          margin-bottom: 40px;
-          .chat__main--body--block{
-            margin-bottom: 10px;
-            @include clearfix();
-            &--name{
-              color: $font-color-gray;
-              font-family: Bold;
-              font-size: 16px;
-              font-weight: 600;
-              float: left;
-            }
-            &--date{
-              color: $font-color-for-date;
-              font-size: 12px;
-              margin-left: 10px;
-              margin-top: 4px;
-              float:left;
-            }
-          }
-          .chat__main--body--message {
-            font-size: 14px;
-            color: $font-color-gray;
-          }
+        padding-top: 46px;
+        padding-left: 40px;
+        padding-right: 40px;
+        background-color: $color-for-body-main;
+        height: calc(100% - 255px);
+        overflow-y: scroll;
+        &--name {
+          font-weight: bold;
+          font-size: 16px;
+          padding-bottom: 10px;
+          padding-right: 20px;
+          float: left;
+          color: $font-color-gray;
+          font-weight: 600;
         }
-        li {
-          margin-bottom: 40px;
-          .chat__main--body--block{
-            margin-bottom: 10px;
-            @include clearfix();
-            &--name{
-              color: $font-color-gray;
-              font-family: Bold;
-              font-size: 16px;
-              font-weight: 600;
-              float: left;
-            }
-            &--date{
-              color: $font-color-for-date;
-              font-size: 12px;
-              margin-left: 10px;
-              margin-top: 4px;
-              float:left;
-            }
-          }
-          .chat__main--body--message {
-            font-size: 14px;
-            color: $font-color-gray;
-          }
+        &--date {
+          color: $font-color-for-date;
+          font-size: 12px;
+          margin-left: 10px;
+          float: left;
         }
+        &--message {
+          font-size: 14px;
+          color: $font-color-gray;
+          padding-bottom: 40px;
+          clear: both;
       }
     }
     &--footer {
@@ -195,7 +165,7 @@
         }
         &__right {
           height: 50px;
-          line-height: 15px;
+          line-height: 50px;
           width: 100px;
           background-color: $font-color-blue;
           text-align: center;
