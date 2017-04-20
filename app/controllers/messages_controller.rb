@@ -1,10 +1,9 @@
 class MessagesController < ApplicationController
 
+  before_action :set_message, only: [:index, :create]
   before_action :authenticate_user!
 
   def index
-    @group = Group.find(params[:group_id])
-    @messages = @group.messages.includes(:user)
     @message = Message.new
   end
 
@@ -13,8 +12,14 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to group_messages_path, notice: 'メッセージが送信されました。'
     else
-      redirect_to group_messages_path, alert: 'メッセージが送信されませんでした。'
+      flash.now[:alert] = 'メッセージの送信に失敗しました。'
+      render :index
     end
+  end
+
+  def set_message
+    @group = Group.find(params[:group_id])
+    @messages = @group.messages.includes(:user)
   end
 
   private
