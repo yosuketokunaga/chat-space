@@ -1,0 +1,10 @@
+- current_user.groups.each do |group|
+  = link_to group_messages_path(group) do
+    .chat-side__group
+      %p.chat__group__name
+        = group.name
+      %p.chat__group__message
+        - if group.messages.last
+          = group.messages.last.body
+        - else
+          まだメッセージはありません。
