@@ -5,12 +5,12 @@
 .chat {
   min-width: 100vw;
   height: 800px;
-  &__side{
+  &-side{
     float:left;
     width: 300px;
     height: calc(100% - 24px);
     background-color: #2F3E51;
-    &--user {
+    &__user {
       height: 80px;
       padding: 20px;
       color: $font-color-white;
@@ -35,50 +35,33 @@
       }
     }
 
-    &--groups {
-      .chat__side--group {
-        height: 91px;
-        .chat--group__link {
+    &__groups {
+      height: 91px;
+      .chat-side__group {
           display:block;
           padding:20px;
           color: $font-color-white;
-          .chat--group__name {
+          .chat__group__name {
             font-size: 15px;
             margin-bottom: 5px;
           }
-          .chat--group__message {
+          .chat__group__message {
             font-size: 11px;
           }
         }
-      }
-      .chat__side--group {
-        height: 91px;
-        .chat--group__link {
-          display:block;
-          padding:20px;
-          color: $font-color-white;
-          .chat--group__name {
-            font-size: 15px;
-            margin-bottom: 5px;
-          }
-          .chat--group__message {
-            font-size: 11px;
-          }
-        }
-      }
     }
   }
 
-  &__main{
+  &-main{
     float: left;
     width: calc(100vw - 300px);
     height: calc(100% - 24px);
-    &--header {
+    &__header {
       padding-right: 40px;
       padding-left: 40px;
       border-bottom: 1px solid #eee;
       height: 120px;
-      &__left{
+      &--left{
         float:left;
         h2{
           padding-top: 35px;
@@ -94,7 +77,7 @@
           font-size: 12px;
         }
       }
-      &__right {
+      &--right {
           float:right;
           display: inline-block;
           margin: 28px 0;
@@ -106,14 +89,14 @@
           border: 2px solid;
       }
     }
-    &--body {
+    &__body {
         padding-top: 46px;
         padding-left: 40px;
         padding-right: 40px;
         background-color: $color-for-body-main;
         height: calc(100% - 255px);
         overflow-y: scroll;
-        &--name {
+        &__name {
           font-weight: bold;
           font-size: 16px;
           padding-bottom: 10px;
@@ -122,26 +105,26 @@
           color: $font-color-gray;
           font-weight: 600;
         }
-        &--date {
+        &__date {
           color: $font-color-for-date;
           font-size: 12px;
           margin-left: 10px;
           float: left;
         }
-        &--message {
+        &__message {
           font-size: 14px;
           color: $font-color-gray;
           padding-bottom: 40px;
           clear: both;
       }
     }
-    &--footer {
+    &__footer {
       height: 90px;
       background-color: #DDD;
-      &--block{
+      &__block{
         padding: 20px 40px 20px 40px;
         @include clearfix();
-        &__left {
+        &--left {
           background-color: white;
           height: 38px;
           padding-top: 12px;
@@ -151,7 +134,7 @@
           width: calc(100% - 190px );
           float:left
         }
-        button.chat__main--footer--image {
+        button.chat-main__footer__image {
           background-color: white;
           height: 50px;
           width: 50px;
@@ -163,7 +146,7 @@
           color: $font-color-gray;
           }
         }
-        &__right {
+        &--right {
           height: 50px;
           line-height: 50px;
           width: 100px;
