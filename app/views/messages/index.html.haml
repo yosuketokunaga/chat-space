@@ -16,7 +16,7 @@
     .chat-main__footer
       .chat-main__footer__block
         = form_for ([@group,@message]) do |f|
-          = f.text_field :body, placeholder: "type a text", class: "chat-main__footer__block--left"
+          = f.text_field :body, placeholder: "type a text", class: "chat-main__footer__block__left"
           = button_tag type: 'submit', class: "chat-main__footer__image" do
             %i.fa.fa-image
-          = f.submit "Send", class: "chat-main__footer__block--right"
+          = f.submit "Send", class: "chat-main__footer__block__right"

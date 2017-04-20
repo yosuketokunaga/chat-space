@@ -61,7 +61,7 @@
       padding-left: 40px;
       border-bottom: 1px solid #eee;
       height: 120px;
-      &--left{
+      &__left{
         float:left;
         h2{
           padding-top: 35px;
@@ -77,7 +77,7 @@
           font-size: 12px;
         }
       }
-      &--right {
+      &__right {
           float:right;
           display: inline-block;
           margin: 28px 0;
@@ -124,7 +124,7 @@
       &__block{
         padding: 20px 40px 20px 40px;
         @include clearfix();
-        &--left {
+        &__left {
           background-color: white;
           height: 38px;
           padding-top: 12px;
@@ -146,7 +146,7 @@
           color: $font-color-gray;
           }
         }
-        &--right {
+        &__right {
           height: 50px;
           line-height: 50px;
           width: 100px;

@@ -10,16 +10,16 @@
       = render partial: "layouts/group"
   .chat-main
     .chat-main__header
-      .chat-main__header--left
+      .chat-main__header__left
         %h2 Sampleグループ
         %p Members: yosuketokunaga
-      .chat-main__header--right
+      .chat-main__header__right
         =link_to 'Edit', ""
     .chat-main__body
     .chat-main__footer
       .chat-main__footer__block
         %form
-          %textarea.chat-main__footer__block--left{:placeholder => "type a text"}
+          %textarea.chat-main__footer__block__left{:placeholder => "type a text"}
           %button.chat-main__footer__image{:type=> "submit"}
             %i.fa.fa-image
-          %input.chat-main__footer__block--right{:type => "submit", :value => "Send"}
+          %input.chat-main__footer__block__right{:type => "submit", :value => "Send"}
