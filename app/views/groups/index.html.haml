@@ -10,13 +10,16 @@
       = render partial: "layouts/group"
   .chat-main
     .chat-main__header
-      = render partial: 'header', locals:{ group: @group }
+      .chat-main__header__left
+        %h2 Sampleグループ
+        %p Members: yosuketokunaga
+      .chat-main__header__right
+        =link_to 'Edit', ""
     .chat-main__body
-      = render @messages
     .chat-main__footer
       .chat-main__footer__block
-        = form_for ([@group,@message]) do |f|
-          = f.text_field :body, placeholder: "type a text", class: "chat-main__footer__block__left"
-          = button_tag type: 'submit', class: "chat-main__footer__image" do
+        %form
+          %textarea.chat-main__footer__block__left{:placeholder => "type a text"}
+          %button.chat-main__footer__image{:type=> "submit"}
             %i.fa.fa-image
-          = f.submit "Send", class: "chat-main__footer__block__right"
+          %input.chat-main__footer__block__right{:type => "submit", :value => "Send"}
