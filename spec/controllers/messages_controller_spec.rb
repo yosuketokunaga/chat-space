@@ -4,7 +4,6 @@ describe MessagesController do
   let(:group) { create(:group) }
   let(:user) { create(:user) }
   let(:message) { attributes_for(:message) }
-  let(:invalid_message) { attributes_for(:message, body: nil) }
 
   describe 'GET #index' do
     before do
@@ -45,8 +44,9 @@ describe MessagesController do
     end
 
     context 'if @message cant be saved' do
+      let(:message) { attributes_for(:message, body: nil) }
       before do
-        post :create, params: { group_id: group, message: invalid_message}
+        post :create, params: { group_id: group, message: message}
       end
 
       it 'renders the :index template' do
