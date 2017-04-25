@@ -23,13 +23,10 @@ describe MessagesController do
   describe 'POST #create' do
     before do
       login_user user
+      post :create, params: { group_id: group, message: message }
     end
 
     context 'if @message can be saved' do
-      before do
-        post :create, params: { group_id: group, message: message }
-      end
-
       it "assigns the requested message to @message" do
         expect(assigns(:message)).to be_valid
       end
@@ -45,9 +42,6 @@ describe MessagesController do
 
     context 'if @message cant be saved' do
       let(:message) { attributes_for(:message, body: nil) }
-      before do
-        post :create, params: { group_id: group, message: message}
-      end
 
       it 'renders the :index template' do
         expect(response).to render_template :index
