@@ -1,10 +1,8 @@
 FactoryGirl.define do
 
   factory :message do
-    body                  "abe"
-    user_id               "1"
-    group_id              "1"
-    created_at { Faker::Time.between(2.days.ago, Time.now, :all) }
+    body       { Faker::Lorem.sentence }
+    user_id    { Faker::Number.between(1,100)}
+    group_id   { Faker::Number.between(1,100)}
   end
-
 end
