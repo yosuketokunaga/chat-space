@@ -36,6 +36,7 @@ gem "font-awesome-rails"
 gem 'devise'
 gem 'devise-i18n'
 gem 'haml-rails'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,6 +44,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails', "~> 4.4.1"
   gem 'rails-i18n'
+  gem 'faker'
 end
 
 group :development do
@@ -56,6 +58,5 @@ group :development do
 end
 
 group :test do
-  gem 'faker'
   gem 'rails-controller-testing'
 end
