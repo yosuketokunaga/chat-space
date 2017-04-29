@@ -1,10 +1,5 @@
 $(function() {
   function buildHTML(message) {
-    var html = (`<div class="chat-main__body">
-                  <div class=chat-main__body__name>${ message.user.name }</div>
-                  <div class=chat-main__body__date>${ message.created_at }</div>
-                  <div class=chat-main__body__message>${ message.body }</div>
-                  </div>`);
     return html;
   }
 
