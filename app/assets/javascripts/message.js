@@ -1,14 +1,19 @@
 $(function() {
   function buildHTML(message) {
-    return html;
+    return (`<div class="chat-main__body">
+            <div class=chat-main__body__name>${ message.user.name }</div>
+            <div class=chat-main__body__date>${ message.created_at }</div>
+            <div class=chat-main__body__message>${ message.body }</div>
+            </div>`);
   }
 
-  $('.js-form').on('submit', function(e) {
+  $('.chat-main__footer__block__right').on('submit', function(e) {
     e.preventDefault();
     var fd = new FormData($(this).get(0));
+    var current_url = location.pathname;
     $.ajax({
       type: 'POST',
-      url: form.attr('action'),
+      url: current_url,
       data: fd,
       contentType : false,
       processData : false,
