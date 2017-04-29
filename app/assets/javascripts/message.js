@@ -20,7 +20,7 @@ $(function() {
       processData : false,
       dataType: 'json'
     })
-    
+
     .done(function(data) {
       var html = buildHTML(data);
       $('.chat-main__body').append(html);
@@ -30,7 +30,6 @@ $(function() {
     });
     return false;
   });
-  $('.chat-main__body').animate({
-    scrollTop: $(document).height()
+  $('.chat-main__body').animate({scrollTop: $(document).height()
   },1500);
 });
