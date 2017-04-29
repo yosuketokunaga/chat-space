@@ -11,6 +11,7 @@ $(function() {
     e.preventDefault();
     var fd = new FormData($(this).get(0));
     var current_url = location.pathname;
+
     $.ajax({
       type: 'POST',
       url: current_url,
@@ -19,6 +20,7 @@ $(function() {
       processData : false,
       dataType: 'json'
     })
+    
     .done(function(data) {
       var html = buildHTML(data);
       $('.chat-main__body').append(html);
