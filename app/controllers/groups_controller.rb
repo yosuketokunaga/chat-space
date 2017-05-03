@@ -4,19 +4,25 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @groups = current_user.groups
   end
 
   def new
     @group = Group.new
+    @group.users << current_user
   end
 
   def create
     @group = Group.new(group_params)
-    if @group.save
-      redirect_to group_messages_path(@group), notice: 'チャットグループが作成されました。'
-    else
-      flash.now[:alert] = 'チャットグループの作成に失敗しました。'
-      render new_group_path
+
+    respond_to do |format|
+      if @group.save
+        format.html { redirect_to group_messages_path(@group), notice: 'チャットグループが作成されました。' }
+        format.json
+      else
+        format.html { render :new }
+        format.json
+      end
     end
   end
 
@@ -24,11 +30,14 @@ class GroupsController < ApplicationController
   end
 
   def update
-    if @group.update(group_params)
-      redirect_to group_messages_path(@group), notice: 'グループが更新されました。'
-    else
-      flash.now[:alert] = 'グループの更新に失敗しました。'
-      render edit_group_path
+    respond_to do |format|
+      if @group.update(group_params)
+        format.html { redirect_to group_messages_path(@group), notice: 'グループが更新されました。' }
+        format.json
+      else
+        format.html { render :edit }
+        format.json
+      end
     end
   end
 
@@ -39,7 +48,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name,{ user_ids:[]})
+    params.require(:group).permit(:name, user_ids:[])
   end
 
 end
