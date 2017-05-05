@@ -5,7 +5,6 @@ $(function() {
   }
 
   function buildHTML(message) {
-    console.log(message)
 
     if (message.image_url) {
       var imageEle = '<img src = "' + message.image_url + '">';
@@ -42,7 +41,6 @@ $(function() {
     var $form = $(this);
     e.preventDefault();
     var fd = new FormData($(this)[0]);
-    console.log(fd);
 
     $.ajax(document.location.href + '.json', {
       type: 'POST',
@@ -52,15 +50,11 @@ $(function() {
       dataType: 'json',
     })
     .done(function(data) {
-      console.log(data);
       var html = buildHTML(data);
-      console.log(html);
       $('.chat-main__body').append(html);
 
       $form.get(0).reset()
       scrollToBottom();
-
-      console.log('form');
     })
     .fail(function() {
       alert("エラーが発生しました");
