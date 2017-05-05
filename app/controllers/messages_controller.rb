@@ -1,34 +1,35 @@
 class MessagesController < ApplicationController
 
-  before_action :set_message, only: [:index, :create]
-  before_action :authenticate_user!
+  before_action :set_group,:set_messages, only: [:index, :create]
 
   def index
     @message = Message.new
   end
 
   def create
-    @message = Message.new(message_params)
+    @message = current_user.messages.new(message_params)
     if @message.save
       respond_to do |format|
-        format.html { redirect_to group_messages_path, notice: 'メッセージが送信されました'}
+        format.html { redirect_to group_messages_path(@group), notice: 'メッセージが送信されました'}
         format.json
       end
     else
-      flash.now[:alert] = 'メッセージの送信に失敗しました。'
+      flash.now.alert = 'メッセージを入力して下さい'
       render :index
     end
   end
 
-  def set_message
-    @group = Group.find(params[:group_id])
-    @messages = @group.messages.includes(:user)
+  private
+  def message_params
+    params.require(:message).permit(:body, :image).merge(group_id: params[:group_id], user_id: current_user.id)
   end
 
-  private
+  def set_group
+    @group = Group.find(params[:group_id])
+  end
 
-  def message_params
-    params.require(:message).permit(:body).merge(user_id: current_user.id, group_id: params[:group_id])
+  def set_messages
+    @messages = @group.messages.includes(:user)
   end
 
 end

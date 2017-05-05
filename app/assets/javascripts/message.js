@@ -1,35 +1,64 @@
 $(function() {
-  function buildHTML(message) {
-    return (`<div class="chat-main__body">
-            <div class=chat-main__body__name>${ message.user.name }</div>
-            <div class=chat-main__body__date>${ message.created_at }</div>
-            <div class=chat-main__body__message>${ message.body }</div>
-            </div>`);
+
+  function scrollToBottom() {
+    $('.chat-main__body').scrollTop( $('.chat-main__body__messages').height() );
   }
 
-  $('.chat-main__footer__block__right').on('submit', function(e) {
+  function buildHTML(message) {
+
+    if (message.image_url) {
+      var imageEle = '<img src = "' + message.image_url + '">';
+    } else {
+      var imageEle = '';
+    }
+
+    var html =
+      '<div class="chat-main__body__messages>' +
+      '<div class="chat-main__body__name">' +
+      message.name +
+      '</div>' +
+      '<div class="chat-main__body__date">' +
+      message.created_at +
+      '</div>' +
+      '<div class="chat-main__body__message">' +
+      message.body +
+      '</div>'  +
+      '<div class = "chat-main__body__image">' +
+      imageEle +
+      '</div>' +
+      '</div>' ;
+    return html
+  }
+
+  scrollToBottom();
+
+  $('#message_image').on('change', function(){
+    $(this).parents('#new_message').submit();
+  });
+
+// フォーム送信の非同期化
+  $('form#new_message').submit(function(e) {
+    var $form = $(this);
     e.preventDefault();
-    var fd = new FormData($(this).get(0));
-    var current_url = location.pathname;
+    var fd = new FormData($(this)[0]);
 
-    $.ajax({
+    $.ajax(document.location.href + '.json', {
       type: 'POST',
-      url: current_url,
+      processData: false,
+      contentType: false,
       data: fd,
-      contentType : false,
-      processData : false,
-      dataType: 'json'
+      dataType: 'json',
     })
-
     .done(function(data) {
       var html = buildHTML(data);
       $('.chat-main__body').append(html);
+
+      $form.get(0).reset()
+      scrollToBottom();
     })
     .fail(function() {
-      alert('メッセージの送信に失敗しました。');
+      alert("エラーが発生しました");
     });
     return false;
   });
-  $('.chat-main__body').animate({scrollTop: $(document).height()
-  },1500);
 });
