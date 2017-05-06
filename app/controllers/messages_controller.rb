@@ -4,6 +4,11 @@ class MessagesController < ApplicationController
 
   def index
     @message = Message.new
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @group.messages.includes(:user).map(&:to_api_json) }
+    end
   end
 
   def create
