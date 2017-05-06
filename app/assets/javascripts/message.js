@@ -53,7 +53,7 @@ $(function() {
       var html = buildHTML(data);
       $('.chat-main__body').append(html);
 
-      $form.get(0).reset()
+      $form.get(0).reset();
       scrollToBottom();
     })
     .fail(function() {
@@ -61,4 +61,28 @@ $(function() {
     });
     return false;
   });
+
+  // メッセージページでのみ実行
+  // 10秒に1回チャット部分の更新
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(function(){
+      $.ajax(document.location.href + '.json', {
+        type: 'GET',
+        dataType: 'json',
+        success: function(json) {
+
+          var html = '';
+          json.forEach(function(message){
+            html += buildHTML(message);
+          });
+
+          $('.chat-main__body').html(html);
+
+        },
+        error: function(json) {
+          alert('エラーが発生しました');
+        }
+      });
+    }, 10 * 1000);
+  }
 });
